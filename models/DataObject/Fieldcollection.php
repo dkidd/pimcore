@@ -156,6 +156,7 @@ class Fieldcollection extends Model\AbstractModel implements \Iterator, DirtyInd
     public function add($item)
     {
         $this->items[] = $item;
+        $this->markFieldDirty('_self', true);
     }
 
     /**
@@ -166,6 +167,7 @@ class Fieldcollection extends Model\AbstractModel implements \Iterator, DirtyInd
         if ($this->items[$index]) {
             array_splice($this->items, $index, 1);
         }
+        $this->markFieldDirty('_self', true);
     }
 
     /**
